@@ -8,6 +8,7 @@ import {
 import MainNav from './shared/components/Navigation/MainNav';
 import Users from './user/pages/Users';
 import NewPlace from './places/pages/NewPlace';
+
 const App = () => {
 	return (
 		<Router>
