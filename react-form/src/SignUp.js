@@ -1,9 +1,16 @@
 import React from 'react';
+import useForm from './useForm';
 
-const SignUp = () => {
+import Validate from './Validation';
+import './Form.css';
+const SignUp = ({ submitForm }) => {
+	const { handleChange, values, handleSubmit, errors } = useForm(
+		submitForm,
+		Validate
+	);
 	return (
 		<div className='form-content-right'>
-			<form className='form'>
+			<form className='form' onSubmit={handleSubmit}>
 				<h1>
 					get started with us today! Create your account by filling out the
 					information below.
@@ -18,7 +25,10 @@ const SignUp = () => {
 						name='username'
 						className='form-input'
 						placeholder='Enter your username'
+						value={values.username}
+						onChange={handleChange}
 					/>
+					{errors.username && <p>{errors.username}</p>}
 				</div>
 				<div className='form-inputs'>
 					<label htmlFor='email' className='form-label'>
@@ -30,7 +40,10 @@ const SignUp = () => {
 						name='email'
 						className='form-input'
 						placeholder='Enter your email'
+						value={values.email}
+						onChange={handleChange}
 					/>
+					{errors.email && <p>{errors.email}</p>}
 				</div>
 				<div className='form-inputs'>
 					<label htmlFor='password' className='form-label'>
@@ -42,7 +55,10 @@ const SignUp = () => {
 						name='password'
 						className='form-input'
 						placeholder='Enter your password'
+						value={values.password}
+						onChange={handleChange}
 					/>
+					{errors.password && <p>{errors.password}</p>}
 				</div>
 				<div className='form-inputs'>
 					<label htmlFor='password2' className='form-label'>
@@ -50,11 +66,14 @@ const SignUp = () => {
 					</label>
 					<input
 						id='password2'
-						type='password2'
+						type='password'
 						name='password2'
 						className='form-input'
 						placeholder='Enter your password2'
+						value={values.password2}
+						onChange={handleChange}
 					/>
+					{errors.password2 && <p>{errors.password2}</p>}
 				</div>
 				<button className='form-input-btn' type='submit'>
 					Sign up
