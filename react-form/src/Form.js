@@ -9,7 +9,6 @@ const Form = () => {
 	}
 	return (
 		<div>
-			<SignUp />
 			{!isSubmitted ? <SignUp submitForm={submitForm} /> : <FormValidated />}
 		</div>
 	);
